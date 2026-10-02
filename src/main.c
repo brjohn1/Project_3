@@ -10,6 +10,17 @@
 // 3. handles systick timer for stopwatch timing
 // 4. handles TIM5 timer for SSD multiplexing
 
+// definitions:
+// SysTick  = 10 ms clock → updates the stopwatch value
+// TIM5     = 2.5 ms display clock → refreshes one SSD digit
+// EXTI     = button interrupt system → detects button presses
+// NVIC     = interrupt controller → enables/prioritizes interrupts
+//
+// state       = stopwatch mode: PAUSED, COUNT_UP, or COUNT_DOWN
+// hundredths  = stopwatch value: 0 = 0.00, 100 = 1.00, 9999 = 99.99
+// currentDigit = which of the 4 SSD digits is currently being refreshed
+// digitValues  = the 4 individual digits that SSD.c should display
+
 
 #include "stm32f4xx.h"
 #include "ssd.h"
